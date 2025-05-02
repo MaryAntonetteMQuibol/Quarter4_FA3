@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nested Loop Multiplication Table</title>
+  <style>
+    table {
+      margin-top: 10px;
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid black;
+      padding: 5px 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <p>[enter a number between 2 and 10]</p>
+  <input type="text" id="startVal"> by 
+  <input type="text" id="endVal"><br><br>
+  <button onclick="generateTable()">Click here when ready!</button>
+
+  <div id="tableContainer"></div>
+
+  <script>
+    function generateTable() {
+      const start = parseInt(document.getElementById('startVal').value);
+      const end = parseInt(document.getElementById('endVal').value);
+
+      // Validate input
+      if (isNaN(start) || isNaN(end) || start < 2 || start > 10 || end < 2 || end > 10) {
+        alert("Please enter numbers between 2 and 10");
+        return;
+      }
+
+      let output = "<table>";
+
+      for (let i = 1; i <= start; i++) {
+        output += "<tr>";
+        for (let j = 1; j <= end; j++) {
+          output += `<td>${i * j}</td>`;
+        }
+        output += "</tr>";
+      }
+
+      output += "</table>";
+
+      document.getElementById('tableContainer').innerHTML = output;
+    }
+  </script>
+
+</body>
+</html>
